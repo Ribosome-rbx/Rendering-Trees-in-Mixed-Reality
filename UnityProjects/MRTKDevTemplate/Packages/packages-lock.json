@@ -22,6 +22,27 @@
       },
       "hash": "7747a48d5e994db800b4c60a0a8b95a5ae2ce39f"
     },
+    "com.magicleap.soundfield": {
+      "version": "3.4.1-230617.9.de83cb9",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://registry.npmjs.org"
+    },
+    "com.magicleap.unitysdk": {
+      "version": "1.9.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.magicleap": "7.0.0",
+        "com.unity.xr.arfoundation": "5.0.0-pre.12",
+        "com.unity.xr.interaction.toolkit": "2.1.0-pre.1",
+        "com.unity.inputsystem": "1.3.0",
+        "com.unity.modules.androidjni": "1.0.0",
+        "com.unity.xr.interactionsubsystems": "2.0.0"
+      },
+      "url": "http://registry.npmjs.org"
+    },
     "com.microsoft.mixedreality.openxr": {
       "version": "file:../../../ExternalDependencies/com.microsoft.mixedreality.openxr-1.7.0.tgz",
       "depth": 0,
@@ -240,6 +261,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.xr.interactionsubsystems": {
+      "version": "2.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.subsystems": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.10",
       "depth": 1,
@@ -247,6 +277,22 @@
       "dependencies": {
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.magicleap": {
+      "version": "7.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.screencapture": "1.0.0",
+        "com.unity.modules.vr": "1.0.0",
+        "com.unity.modules.xr": "1.0.0",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.xr.arfoundation": "5.0.0-pre.12",
+        "com.unity.xr.interactionsubsystems": "2.0.0",
+        "com.unity.xr.management": "4.2.0",
+        "com.unity.modules.androidjni": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
