@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -792,7 +792,7 @@ MonoBehaviour:
   proximityType: -1
   executionOrder: 0
   minimumScale: {x: 0.5, y: 0.5, z: 0.5}
-  maximumScale: {x: 1.5, y: 1.5, z: 1.5}
+  maximumScale: {x: 5, y: 5, z: 5}
   relativeToInitialState: 1
 --- !u!114 &1768482734058504657
 MonoBehaviour:
