@@ -2,7 +2,7 @@
   "dependencies": {
     "com.atteneder.gltfast": "https://github.com/atteneder/glTFast.git#v4.8.3",
     "com.atteneder.ktx": "https://github.com/atteneder/KtxUnity.git#v2.1.2",
-    "com.magicleap.mrtk3": "file:C:/Users/Boxiang Rong/MagicLeap/tools/unity/mrtk3/v1.0.0-pre.5/com.magicleap.mrtk3-1.0.0-pre.5.tgz",
+    "com.magicleap.mrtk3": "file:../../../UnityPackages/MagicLeapMRTK3/com.magicleap.mrtk3-1.0.0-pre.5.tgz",
     "com.magicleap.soundfield": "3.4.1-230617.9.de83cb9",
     "com.magicleap.unitysdk": "1.9.0",
     "com.microsoft.mixedreality.visualprofiler": "https://github.com/microsoft/VisualProfiler-Unity.git#v2.2.0",
