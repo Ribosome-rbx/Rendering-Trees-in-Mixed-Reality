@@ -73,6 +73,7 @@ public class UIManager : MonoBehaviour
                 if (hit.transform.gameObject.name == "TreeStore_tropical")
                 {
                     TreeStoreCanvas.SetActive(false);
+                    new WaitForSeconds(0.3f);
                     TropicalCanvas.SetActive(true);
                 }
                 if (hit.transform.gameObject.name == "TreeStore_cherry")
@@ -110,23 +111,48 @@ public class UIManager : MonoBehaviour
                         if (buttonName == "FirTreeButton") AutoPlant_type = "FirTree";
                         else if (buttonName == "OakTreeButton") AutoPlant_type = "OakTree";
                         else if (buttonName == "PalmTreeButton") AutoPlant_type = "PalmTree";
-                        else if (buttonName == "PoplarTreeButton") AutoPlant_type = "Poplar";
+                        else if (buttonName == "PoplarTreeButton") AutoPlant_type = "PoplarTree";
                         else hitButton = false;
                     }
                     else
                     {
                         Debug.Log("Manual Mode");
-                        Vector3 pos = controllerInput.transform.position + controllerInput.transform.forward * 0.5f;
+                        Vector3 pos = controllerInput.transform.position + controllerInput.transform.forward * 1.2f;
                         Quaternion rot = controllerInput.transform.rotation;
-                        if (buttonName == "FirTreeButton") Instantiate(FirTree, pos, rot);
-                        else if (buttonName == "OakTreeButton") Instantiate(OakTree, pos, rot);
-                        else if (buttonName == "PalmTreeButton") Instantiate(PalmTree, pos, rot);
-                        else if (buttonName == "PoplarTreeButton") Instantiate(PoplarTree, pos, rot);
+                        if (buttonName == "FirTreeButton")
+                        {
+                            Instantiate(FirTree, pos, rot);
+                            AutoPlant_type = "FirTree";
+                        }
+                        else if (buttonName == "OakTreeButton")
+                        {
+                            Instantiate(OakTree, pos, rot);
+                            AutoPlant_type = "OakTree";
+                        }
+                        else if (buttonName == "PalmTreeButton")
+                        {
+                            Instantiate(PalmTree, pos, rot);
+                            AutoPlant_type = "PalmTree";
+                        }
+                        else if (buttonName == "PoplarTreeButton")
+                        {
+                            Instantiate(PoplarTree, pos, rot);
+                            AutoPlant_type = "PoplarTree";
+                        }
                         else hitButton = false;
                     }
                     if (hitButton) closeCanvas();
                 }
             }
+        }
+        if (BumperDown)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit))
+            {
+                if (UseRayCasting) AutoDelete_helper(hit);
+            }
+
         }
     }
 
@@ -157,15 +183,33 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private bool hitTree(RaycastHit hit)
+    {
+        // check if hit tree objects
+        if (hit.transform.gameObject.name == "Manipulator") return true;
+        if (hit.transform.gameObject.name == "FirTree") return true;
+        if (hit.transform.gameObject.name == "OakTree") return true;
+        if (hit.transform.gameObject.name == "PalmTree") return true;
+        if (hit.transform.gameObject.name == "PoplarTree") return true;
+        return false;
+    }
 
     private void AutoPlant_helper(RaycastHit hit)
     {
         Vector3 pos = hit.point;
         Quaternion rot = new Quaternion(0f, 0f, 0f, 1f);
-        if (AutoPlant_type == "FirTree") Instantiate(FirTree, pos, rot);
-        if (AutoPlant_type == "OakTree") Instantiate(OakTree, pos, rot);
-        if (AutoPlant_type == "PalmTree") Instantiate(PalmTree, pos, rot);
-        if (AutoPlant_type == "Poplar") Instantiate(PoplarTree, pos, rot);
+        if (!hitTree(hit))
+        {
+            if (AutoPlant_type == "FirTree") Instantiate(FirTree, pos, rot);
+            if (AutoPlant_type == "OakTree") Instantiate(OakTree, pos, rot);
+            if (AutoPlant_type == "PalmTree") Instantiate(PalmTree, pos, rot);
+            if (AutoPlant_type == "PoplarTree") Instantiate(PoplarTree, pos, rot);
+        }
+    }
+
+    private void AutoDelete_helper(RaycastHit hit)
+    {
+        if (hitTree(hit)) DestroyImmediate(hit.transform.gameObject);
     }
 
     private void closeCanvas()
