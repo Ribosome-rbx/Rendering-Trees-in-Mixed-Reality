@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SimplePine
-  m_Shader: {fileID: -6465566751694194690, guid: b127888cc78d28d4a92de353e9513fa6,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: b127888cc78d28d4a92de353e9513fa6, type: 3}
   m_Parent: {fileID: 2100000, guid: e053d53e7e29c494b92fffdf84448671, type: 2}
   m_ModifiedSerializedProperties: 18
   m_ValidKeywords: []
@@ -53,7 +52,10 @@ Material:
     - _DstBlendAlpha: 0
     - _SrcBlend: 1
     - _Surface: 0
+    - _Wind_Density: 1
+    - _Wind_Strength: 0.08
     - _WorkflowMode: 1
     - _ZWrite: 1
-    m_Colors: []
+    m_Colors:
+    - _Wind_Movement: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
