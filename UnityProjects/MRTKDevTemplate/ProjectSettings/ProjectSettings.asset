@@ -827,9 +827,20 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: USE_INPUT_SYSTEM_POSE_CONTROL
-    Standalone: USE_INPUT_SYSTEM_POSE_CONTROL
+    Android: USE_INPUT_SYSTEM_POSE_CONTROL;MAGICLEAP
+    EmbeddedLinux: MAGICLEAP
+    GameCoreXboxOne: MAGICLEAP
+    Nintendo Switch: MAGICLEAP
+    PS4: MAGICLEAP
+    PS5: MAGICLEAP
+    QNX: MAGICLEAP
+    Stadia: MAGICLEAP
+    Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;MAGICLEAP
+    VisionOS: MAGICLEAP
+    WebGL: MAGICLEAP
     Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL
+    XboxOne: MAGICLEAP
+    tvOS: MAGICLEAP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
