@@ -128,6 +128,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 314195728}
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5564979247096873841}
   m_SourcePrefab: {fileID: 100100000, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
 --- !u!4 &1214529608091387485 stripped
 Transform:
@@ -182,6 +185,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.487297, y: 2.159443, z: 1.9277921}
   m_Center: {x: 0.27394247, y: 1.1151569, z: -0.00000014901161}
+--- !u!114 &5564979247096873841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214529608091490939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80997ecb9404e8478db58644f414653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphere: {fileID: 961783791542861167, guid: 6e6d184fb041d1f448f2f3474f08176c, type: 3}
+  dist_treshold: 0.6
+  location_marker: {fileID: 2100000, guid: 4d9634496b867de43ab769506b202b67, type: 2}
+  planting_sign: {fileID: 2100000, guid: f62f188dc6a5f55458ac47e93b3951f4, type: 2}
 --- !u!1 &1214529608091490941 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 6ceef383a3dfd0a4e9c38b8d793170e4, type: 3}
@@ -350,6 +369,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 9f512430eba32d845aab8de9ba5e393c, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5564979247096873841}
+        m_TargetAssemblyTypeName: FallOnGround, Assembly-CSharp
+        m_MethodName: attach2Ground
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -678,8 +709,8 @@ MonoBehaviour:
   springTorqueSoftness: 0.1
   springDamping: 1
   springForceLimit: 100
-  rotationAnchorNear: 1
-  rotationAnchorFar: 1
+  rotationAnchorNear: 0
+  rotationAnchorFar: 0
   releaseBehavior: 3
   transformSmoothingLogicType:
     reference: MixedReality.Toolkit.SpatialManipulation.DefaultTransformSmoothingLogic,
@@ -771,6 +802,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 9f512430eba32d845aab8de9ba5e393c, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5564979247096873841}
+        m_TargetAssemblyTypeName: FallOnGround, Assembly-CSharp
+        m_MethodName: attach2Ground
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

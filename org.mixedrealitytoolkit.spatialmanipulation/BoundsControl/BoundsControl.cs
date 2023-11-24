@@ -586,7 +586,7 @@ namespace MixedReality.Toolkit.SpatialManipulation
             }
         }
 
-        private void UnsubscribeFromInteractable()
+        public void UnsubscribeFromInteractable()
         {
             if (Interactable != null)
             {

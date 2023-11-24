@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using static MagicLeapInputs;
 using UnityEngine.XR.Interaction.Toolkit.AR;
+using MixedReality.Toolkit.SpatialManipulation;
 
 public class UIManager : MonoBehaviour
 {
@@ -209,7 +210,7 @@ public class UIManager : MonoBehaviour
 
     private void AutoDelete_helper(RaycastHit hit)
     {
-        if (hitTree(hit)) DestroyImmediate(hit.transform.gameObject);
+        if (hitTree(hit)) DestroyImmediate(hit.transform.root.gameObject);
     }
 
     private void closeCanvas()
