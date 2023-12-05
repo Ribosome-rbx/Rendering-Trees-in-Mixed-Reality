@@ -854,10 +854,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4274791461060663925, guid: 1b6be29da8713704a9f9954929dad8f7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b6be29da8713704a9f9954929dad8f7, type: 3}
 --- !u!20 &713586865 stripped
 Camera:
@@ -2034,10 +2031,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4274791461060663925, guid: 1b6be29da8713704a9f9954929dad8f7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b6be29da8713704a9f9954929dad8f7, type: 3}
 --- !u!1001 &1951352664
 PrefabInstance:
@@ -2278,13 +2272,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6698533696128023277, guid: 787f9977adf09a441b3b7a84ea589706, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 9184294662645668241, guid: 787f9977adf09a441b3b7a84ea589706, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 787f9977adf09a441b3b7a84ea589706, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
