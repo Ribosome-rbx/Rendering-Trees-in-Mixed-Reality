@@ -11,16 +11,31 @@ using MixedReality.Toolkit.SpatialManipulation;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Canvas Settings")]
     public GameObject TreeStoreCanvas;
     public GameObject TropicalCanvas;
+    public GameObject billboardRegularCanvas;
+    public GameObject billboardStyledCanvas;
+    [Header("Controller Settings")]
     public GameObject controllerInput;
+    [Header("Topic 1")]
     public GameObject CherryTree;
+    [Header("Topic 2")]
     public GameObject FirTree;
     public GameObject OakTree;
     public GameObject PalmTree;
     public GameObject PoplarTree;
+    [Header("Topic 3")]
+    public GameObject BillAutumnTree;
+    public GameObject BillPineTree;
+    public GameObject BillRegularTree;
+    [Header("Topic 4")]
+    public GameObject StyleTree1;
+    public GameObject StyleTree2;
+    public GameObject StyleTree3;
+    public GameObject StyleTree4;
 
-    public void changeMode()  // change is "ChangeMode" button is predded down
+    public void changeMode()  // "ChangeMode" button is pressed down
     {
         UseRayCasting = !UseRayCasting;
         Debug.Log("Change Mode! use Ray-casting " + UseRayCasting);
@@ -49,6 +64,8 @@ public class UIManager : MonoBehaviour
         mlInputs.Enable();
         controllerActions = new MagicLeapInputs.ControllerActions(mlInputs);
         TropicalCanvas.SetActive(false);
+        billboardRegularCanvas.SetActive(false);
+        billboardStyledCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,7 +75,7 @@ public class UIManager : MonoBehaviour
         {
             openMenu(); // open Menu if Menu is pressed down
             TreeStoreManager();
-            TropicalManager();
+            TopicManager();
         }
     }
 
@@ -74,8 +91,17 @@ public class UIManager : MonoBehaviour
                 if (hit.transform.gameObject.name == "TreeStore_tropical")
                 {
                     TreeStoreCanvas.SetActive(false);
-                    new WaitForSeconds(0.3f);
                     TropicalCanvas.SetActive(true);
+                }
+                if (hit.transform.gameObject.name == "TreeStore_billboardRegular")
+                {
+                    TreeStoreCanvas.SetActive(false);
+                    billboardRegularCanvas.SetActive(true);
+                }
+                if (hit.transform.gameObject.name == "TreeStore_billboardStyle")
+                {
+                    TreeStoreCanvas.SetActive(false);
+                    billboardStyledCanvas.SetActive(true);
                 }
                 if (hit.transform.gameObject.name == "TreeStore_cherry")
                 {
@@ -89,7 +115,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    private void TropicalManager()
+    private void TopicManager()
     {
         if (TriggerDown)
         {
@@ -113,6 +139,13 @@ public class UIManager : MonoBehaviour
                         else if (buttonName == "OakTreeButton") AutoPlant_type = "OakTree";
                         else if (buttonName == "PalmTreeButton") AutoPlant_type = "PalmTree";
                         else if (buttonName == "PoplarTreeButton") AutoPlant_type = "PoplarTree";
+                        else if (buttonName == "BillAutumnTreeButton") AutoPlant_type = "AutumnTree";
+                        else if (buttonName == "BillPineTreeButton") AutoPlant_type = "PineTree";
+                        else if (buttonName == "BillRegularTreeButton") AutoPlant_type = "RegularTree";
+                        else if (buttonName == "StyleTree1Button") AutoPlant_type = "StyleTree1";
+                        else if (buttonName == "StyleTree2Button") AutoPlant_type = "StyleTree2";
+                        else if (buttonName == "StyleTree3Button") AutoPlant_type = "StyleTree3";
+                        else if (buttonName == "StyleTree4Button") AutoPlant_type = "StyleTree4";
                         else hitButton = false;
                     }
                     else
@@ -139,6 +172,41 @@ public class UIManager : MonoBehaviour
                         {
                             Instantiate(PoplarTree, pos, rot);
                             AutoPlant_type = "PoplarTree";
+                        }
+                        else if (buttonName == "BillAutumnTreeButton")
+                        {
+                            Instantiate(BillAutumnTree, pos, rot);
+                            AutoPlant_type = "AutumnTree";
+                        }
+                        else if (buttonName == "BillPineTreeButton")
+                        {
+                            Instantiate(BillPineTree, pos, rot);
+                            AutoPlant_type = "PineTree";
+                        }
+                        else if (buttonName == "BillRegularTreeButton")
+                        {
+                            Instantiate(BillRegularTree, pos, rot);
+                            AutoPlant_type = "RegularTree";
+                        }
+                        else if (buttonName == "StyleTree1Button")
+                        {
+                            Instantiate(StyleTree1, pos, rot);
+                            AutoPlant_type = "StyleTree1";
+                        }
+                        else if (buttonName == "StyleTree2Button")
+                        {
+                            Instantiate(StyleTree2, pos, rot);
+                            AutoPlant_type = "StyleTree2";
+                        }
+                        else if (buttonName == "StyleTree3Button")
+                        {
+                            Instantiate(StyleTree3, pos, rot);
+                            AutoPlant_type = "StyleTree3";
+                        }
+                        else if (buttonName == "StyleTree4Button")
+                        {
+                            Instantiate(StyleTree4, pos, rot);
+                            AutoPlant_type = "StyleTree4";
                         }
                         else hitButton = false;
                     }
@@ -180,6 +248,8 @@ public class UIManager : MonoBehaviour
         {
             TreeStoreCanvas.SetActive(true);
             TropicalCanvas.SetActive(false);
+            billboardRegularCanvas.SetActive(false);
+            billboardStyledCanvas.SetActive(false);
             allowPlant = false;
         }
     }
@@ -192,6 +262,13 @@ public class UIManager : MonoBehaviour
         if (hit.transform.gameObject.name == "OakTree") return true;
         if (hit.transform.gameObject.name == "PalmTree") return true;
         if (hit.transform.gameObject.name == "PoplarTree") return true;
+        if (hit.transform.gameObject.name == "AutumnTree") return true;
+        if (hit.transform.gameObject.name == "PineTree") return true;
+        if (hit.transform.gameObject.name == "RegularTree") return true;
+        if (hit.transform.gameObject.name == "StyleTree1") return true;
+        if (hit.transform.gameObject.name == "StyleTree2") return true;
+        if (hit.transform.gameObject.name == "StyleTree3") return true;
+        if (hit.transform.gameObject.name == "StyleTree4") return true;
         return false;
     }
 
@@ -205,6 +282,13 @@ public class UIManager : MonoBehaviour
             if (AutoPlant_type == "OakTree") Instantiate(OakTree, pos, rot);
             if (AutoPlant_type == "PalmTree") Instantiate(PalmTree, pos, rot);
             if (AutoPlant_type == "PoplarTree") Instantiate(PoplarTree, pos, rot);
+            if (AutoPlant_type == "AutumnTree") Instantiate(BillAutumnTree, pos, rot);
+            if (AutoPlant_type == "PineTree") Instantiate(BillPineTree, pos, rot);
+            if (AutoPlant_type == "RegularTree") Instantiate(BillRegularTree, pos, rot);
+            if (AutoPlant_type == "StyleTree1") Instantiate(StyleTree1, pos, rot);
+            if (AutoPlant_type == "StyleTree2") Instantiate(StyleTree2, pos, rot);
+            if (AutoPlant_type == "StyleTree3") Instantiate(StyleTree3, pos, rot);
+            if (AutoPlant_type == "StyleTree4") Instantiate(StyleTree4, pos, rot);
         }
     }
 
@@ -217,6 +301,8 @@ public class UIManager : MonoBehaviour
     {
         TreeStoreCanvas.SetActive(false);
         TropicalCanvas.SetActive(false);
+        billboardRegularCanvas.SetActive(false);
+        billboardStyledCanvas.SetActive(false);
         allowPlant = true;
     }
 

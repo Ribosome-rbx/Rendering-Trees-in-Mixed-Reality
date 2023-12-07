@@ -13,6 +13,8 @@ public class FallOnGround : MonoBehaviour
     // private
     private GameObject clone;
     private bool attach = false;
+    private bool attached = false;
+    private Vector3 attachedPos = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -26,20 +28,25 @@ public class FallOnGround : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, new Vector3(0,-1,0), out hit))
         {
-            // update sphere position
-            if (clone == null) clone = Instantiate(sphere, hit.point, Quaternion.identity, this.transform);
-            else clone.transform.position = hit.point;
+            if (hit.distance > dist_treshold) { attach = false; attached = false; }
 
-            // update sphere color
-            if (hit.distance > dist_treshold)
+            if (!attached)
             {
-                clone.GetComponent<MeshRenderer>().material = location_marker;
-                attach = false;
-            }
-            else
-            {
-                clone.GetComponent<MeshRenderer>().material = planting_sign;
-                attach = true;
+                // update sphere position
+                if (clone == null) clone = Instantiate(sphere, hit.point, Quaternion.identity, this.transform);
+                else clone.transform.position = hit.point;
+
+                // update sphere color
+                if (hit.distance > dist_treshold)
+                {
+                    clone.GetComponent<MeshRenderer>().material = location_marker;
+                    attach = false;
+                }
+                else
+                {
+                    clone.GetComponent<MeshRenderer>().material = planting_sign;
+                    attach = true;
+                }
             }
         }
     }
@@ -51,11 +58,13 @@ public class FallOnGround : MonoBehaviour
     public void attach2Ground()
     {
         Debug.Log("in attach2Ground");
-        if (attach)
+        if (attach || attached)
         {
-            transform.root.gameObject.transform.position = clone.transform.position;
-            transform.root.gameObject.transform.rotation = Quaternion.identity;
+            attachedPos = transform.root.gameObject.transform.position;
+            transform.root.gameObject.transform.position = new Vector3(attachedPos.x, clone.transform.position.y, attachedPos.z);
+            transform.root.gameObject.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, 0);
             DestroyImmediate(clone);
+            attached = true;
         }
     }
 }
