@@ -25,28 +25,41 @@ public class FallOnGround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        recursiveHit(this.transform.position);
+    }
+
+    private void recursiveHit(Vector3 pos)
+    {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0,-1,0), out hit))
+        if (Physics.Raycast(pos, new Vector3(0, -1, 0), out hit))
         {
-            if (hit.distance > dist_treshold) { attach = false; attached = false; }
-
-            if (!attached)
+            if (!hitTree(hit)) castRay(hit);
+            else
             {
-                // update sphere position
-                if (clone == null) clone = Instantiate(sphere, hit.point, Quaternion.identity, this.transform);
-                else clone.transform.position = hit.point;
+                recursiveHit(hit.point);
+            }
+        }
+    }
+    private void castRay(RaycastHit hit)
+    {
+        if (hit.distance > dist_treshold) { attach = false; attached = false; }
 
-                // update sphere color
-                if (hit.distance > dist_treshold)
-                {
-                    clone.GetComponent<MeshRenderer>().material = location_marker;
-                    attach = false;
-                }
-                else
-                {
-                    clone.GetComponent<MeshRenderer>().material = planting_sign;
-                    attach = true;
-                }
+        if (!attached)
+        {
+            // update sphere position
+            if (clone == null) clone = Instantiate(sphere, hit.point, Quaternion.identity, this.transform.root);
+            else clone.transform.position = hit.point;
+
+            // update sphere color
+            if (hit.distance > dist_treshold)
+            {
+                clone.GetComponent<MeshRenderer>().material = location_marker;
+                attach = false;
+            }
+            else
+            {
+                clone.GetComponent<MeshRenderer>().material = planting_sign;
+                attach = true;
             }
         }
     }
@@ -66,5 +79,22 @@ public class FallOnGround : MonoBehaviour
             DestroyImmediate(clone);
             attached = true;
         }
+    }
+    private bool hitTree(RaycastHit hit)
+    {
+        // check if hit tree objects
+        if (hit.transform.gameObject.name == "Manipulator") return true;
+        if (hit.transform.gameObject.name == "FirTree") return true;
+        if (hit.transform.gameObject.name == "OakTree") return true;
+        if (hit.transform.gameObject.name == "PalmTree") return true;
+        if (hit.transform.gameObject.name == "PoplarTree") return true;
+        if (hit.transform.gameObject.name == "AutumnTree") return true;
+        if (hit.transform.gameObject.name == "PineTree") return true;
+        if (hit.transform.gameObject.name == "RegularTree") return true;
+        if (hit.transform.gameObject.name == "StyleTree1") return true;
+        if (hit.transform.gameObject.name == "StyleTree2") return true;
+        if (hit.transform.gameObject.name == "StyleTree3") return true;
+        if (hit.transform.gameObject.name == "StyleTree4") return true;
+        return false;
     }
 }
