@@ -73,155 +73,149 @@ public class UIManager : MonoBehaviour
     {
         if (onePressChecker())
         {
-            openMenu(); // open Menu if Menu is pressed down
-            TreeStoreManager();
-            TopicManager();
-        }
-    }
-
-
-    private void TreeStoreManager()
-    {
-        if (TriggerDown)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit))
+            if (TriggerDown)
             {
-                Debug.Log("TreeStore Hit! " + hit.transform.gameObject.name);
-                if (hit.transform.gameObject.name == "TreeStore_tropical")
+                RaycastHit hit;
+                if (Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit))
                 {
-                    TreeStoreCanvas.SetActive(false);
-                    TropicalCanvas.SetActive(true);
+                    Debug.Log("Hit! " + hit.transform.gameObject.name);
+                    TreeStoreManager(hit);
+                    TopicManager(hit);
                 }
-                if (hit.transform.gameObject.name == "TreeStore_billboardRegular")
+            }
+            if (BumperDown)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit))
                 {
-                    TreeStoreCanvas.SetActive(false);
-                    billboardRegularCanvas.SetActive(true);
+                    if (UseRayCasting) AutoDelete_helper(hit);
                 }
-                if (hit.transform.gameObject.name == "TreeStore_billboardStyle")
-                {
-                    TreeStoreCanvas.SetActive(false);
-                    billboardStyledCanvas.SetActive(true);
-                }
-                if (hit.transform.gameObject.name == "TreeStore_cherry")
-                {
-                    TreeStoreCanvas.SetActive(false);
-                    Instantiate(CherryTree);
-                }
-                if (hit.transform.gameObject.name == "CloseButton")
-                {
-                    closeCanvas();
-                }
+            }
+            if (MenuDown)
+            {
+                openMenu();
             }
         }
     }
-    private void TopicManager()
-    {
-        if (TriggerDown)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit))
-            {
-                Debug.Log("Tropical Hit! " + hit.transform.gameObject.name);
-                string buttonName = hit.transform.gameObject.name;
-                if (buttonName == "CloseButton")
-                {
-                    closeCanvas();
-                }
-                else
-                {
-                    bool hitButton = true;
-                    if (UseRayCasting)
-                    {
-                        Debug.Log("Ray Casting Mode");
-                        if (allowPlant && buttonName != "ChangeModeButton") AutoPlant_helper(hit);
-                        if (buttonName == "FirTreeButton") AutoPlant_type = "FirTree";
-                        else if (buttonName == "OakTreeButton") AutoPlant_type = "OakTree";
-                        else if (buttonName == "PalmTreeButton") AutoPlant_type = "PalmTree";
-                        else if (buttonName == "PoplarTreeButton") AutoPlant_type = "PoplarTree";
-                        else if (buttonName == "BillAutumnTreeButton") AutoPlant_type = "AutumnTree";
-                        else if (buttonName == "BillPineTreeButton") AutoPlant_type = "PineTree";
-                        else if (buttonName == "BillRegularTreeButton") AutoPlant_type = "RegularTree";
-                        else if (buttonName == "StyleTree1Button") AutoPlant_type = "StyleTree1";
-                        else if (buttonName == "StyleTree2Button") AutoPlant_type = "StyleTree2";
-                        else if (buttonName == "StyleTree3Button") AutoPlant_type = "StyleTree3";
-                        else if (buttonName == "StyleTree4Button") AutoPlant_type = "StyleTree4";
-                        else hitButton = false;
-                    }
-                    else
-                    {
-                        Debug.Log("Manual Mode");
-                        Vector3 pos = controllerInput.transform.position + controllerInput.transform.forward * 1.2f;
-                        Quaternion rot = controllerInput.transform.rotation;
-                        if (buttonName == "FirTreeButton")
-                        {
-                            Instantiate(FirTree, pos, rot);
-                            AutoPlant_type = "FirTree";
-                        }
-                        else if (buttonName == "OakTreeButton")
-                        {
-                            Instantiate(OakTree, pos, rot);
-                            AutoPlant_type = "OakTree";
-                        }
-                        else if (buttonName == "PalmTreeButton")
-                        {
-                            Instantiate(PalmTree, pos, rot);
-                            AutoPlant_type = "PalmTree";
-                        }
-                        else if (buttonName == "PoplarTreeButton")
-                        {
-                            Instantiate(PoplarTree, pos, rot);
-                            AutoPlant_type = "PoplarTree";
-                        }
-                        else if (buttonName == "BillAutumnTreeButton")
-                        {
-                            Instantiate(BillAutumnTree, pos, rot);
-                            AutoPlant_type = "AutumnTree";
-                        }
-                        else if (buttonName == "BillPineTreeButton")
-                        {
-                            Instantiate(BillPineTree, pos, rot);
-                            AutoPlant_type = "PineTree";
-                        }
-                        else if (buttonName == "BillRegularTreeButton")
-                        {
-                            Instantiate(BillRegularTree, pos, rot);
-                            AutoPlant_type = "RegularTree";
-                        }
-                        else if (buttonName == "StyleTree1Button")
-                        {
-                            Instantiate(StyleTree1, pos, rot);
-                            AutoPlant_type = "StyleTree1";
-                        }
-                        else if (buttonName == "StyleTree2Button")
-                        {
-                            Instantiate(StyleTree2, pos, rot);
-                            AutoPlant_type = "StyleTree2";
-                        }
-                        else if (buttonName == "StyleTree3Button")
-                        {
-                            Instantiate(StyleTree3, pos, rot);
-                            AutoPlant_type = "StyleTree3";
-                        }
-                        else if (buttonName == "StyleTree4Button")
-                        {
-                            Instantiate(StyleTree4, pos, rot);
-                            AutoPlant_type = "StyleTree4";
-                        }
-                        else hitButton = false;
-                    }
-                    if (hitButton) closeCanvas();
-                }
-            }
-        }
-        if (BumperDown)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(controllerInput.transform.position, controllerInput.transform.forward, out hit))
-            {
-                if (UseRayCasting) AutoDelete_helper(hit);
-            }
 
+
+    private void TreeStoreManager(RaycastHit hit)
+    {
+        if (hit.transform.gameObject.name == "TreeStore_tropical")
+        {
+            TreeStoreCanvas.SetActive(false);
+            TropicalCanvas.SetActive(true);
+        }
+        if (hit.transform.gameObject.name == "TreeStore_billboardRegular")
+        {
+            TreeStoreCanvas.SetActive(false);
+            billboardRegularCanvas.SetActive(true);
+        }
+        if (hit.transform.gameObject.name == "TreeStore_billboardStyle")
+        {
+            TreeStoreCanvas.SetActive(false);
+            billboardStyledCanvas.SetActive(true);
+        }
+        if (hit.transform.gameObject.name == "TreeStore_cherry")
+        {
+            TreeStoreCanvas.SetActive(false);
+            Instantiate(CherryTree);
+        }
+        if (hit.transform.gameObject.name == "CloseButton")
+        {
+            closeCanvas();
+        }
+    }
+    private void TopicManager(RaycastHit hit)
+    {
+        string buttonName = hit.transform.gameObject.name;
+        if (buttonName == "CloseButton")
+        {
+            closeCanvas();
+        }
+        else
+        {
+            bool hitButton = true;
+            if (UseRayCasting)
+            {
+                Debug.Log("Ray Casting Mode");
+                if (allowPlant && buttonName != "ChangeModeButton") AutoPlant_helper(hit);
+                if (buttonName == "FirTreeButton") AutoPlant_type = "FirTree";
+                else if (buttonName == "OakTreeButton") AutoPlant_type = "OakTree";
+                else if (buttonName == "PalmTreeButton") AutoPlant_type = "PalmTree";
+                else if (buttonName == "PoplarTreeButton") AutoPlant_type = "PoplarTree";
+                else if (buttonName == "BillAutumnTreeButton") AutoPlant_type = "AutumnTree";
+                else if (buttonName == "BillPineTreeButton") AutoPlant_type = "PineTree";
+                else if (buttonName == "BillRegularTreeButton") AutoPlant_type = "RegularTree";
+                else if (buttonName == "StyleTree1Button") AutoPlant_type = "StyleTree1";
+                else if (buttonName == "StyleTree2Button") AutoPlant_type = "StyleTree2";
+                else if (buttonName == "StyleTree3Button") AutoPlant_type = "StyleTree3";
+                else if (buttonName == "StyleTree4Button") AutoPlant_type = "StyleTree4";
+                else hitButton = false;
+            }
+            else
+            {
+                Debug.Log("Manual Mode");
+                Vector3 pos = controllerInput.transform.position + controllerInput.transform.forward * 1.2f;
+                Quaternion rot = controllerInput.transform.rotation;
+                if (buttonName == "FirTreeButton")
+                {
+                    Instantiate(FirTree, pos, rot);
+                    AutoPlant_type = "FirTree";
+                }
+                else if (buttonName == "OakTreeButton")
+                {
+                    Instantiate(OakTree, pos, rot);
+                    AutoPlant_type = "OakTree";
+                }
+                else if (buttonName == "PalmTreeButton")
+                {
+                    Instantiate(PalmTree, pos, rot);
+                    AutoPlant_type = "PalmTree";
+                }
+                else if (buttonName == "PoplarTreeButton")
+                {
+                    Instantiate(PoplarTree, pos, rot);
+                    AutoPlant_type = "PoplarTree";
+                }
+                else if (buttonName == "BillAutumnTreeButton")
+                {
+                    Instantiate(BillAutumnTree, pos, rot);
+                    AutoPlant_type = "AutumnTree";
+                }
+                else if (buttonName == "BillPineTreeButton")
+                {
+                    Instantiate(BillPineTree, pos, rot);
+                    AutoPlant_type = "PineTree";
+                }
+                else if (buttonName == "BillRegularTreeButton")
+                {
+                    Instantiate(BillRegularTree, pos, rot);
+                    AutoPlant_type = "RegularTree";
+                }
+                else if (buttonName == "StyleTree1Button")
+                {
+                    Instantiate(StyleTree1, pos, rot);
+                    AutoPlant_type = "StyleTree1";
+                }
+                else if (buttonName == "StyleTree2Button")
+                {
+                    Instantiate(StyleTree2, pos, rot);
+                    AutoPlant_type = "StyleTree2";
+                }
+                else if (buttonName == "StyleTree3Button")
+                {
+                    Instantiate(StyleTree3, pos, rot);
+                    AutoPlant_type = "StyleTree3";
+                }
+                else if (buttonName == "StyleTree4Button")
+                {
+                    Instantiate(StyleTree4, pos, rot);
+                    AutoPlant_type = "StyleTree4";
+                }
+                else hitButton = false;
+            }
+            if (hitButton) closeCanvas();
         }
     }
 
@@ -244,14 +238,11 @@ public class UIManager : MonoBehaviour
 
     private void openMenu()
     {
-        if (MenuDown)
-        {
-            TreeStoreCanvas.SetActive(true);
-            TropicalCanvas.SetActive(false);
-            billboardRegularCanvas.SetActive(false);
-            billboardStyledCanvas.SetActive(false);
-            allowPlant = false;
-        }
+        TreeStoreCanvas.SetActive(true);
+        TropicalCanvas.SetActive(false);
+        billboardRegularCanvas.SetActive(false);
+        billboardStyledCanvas.SetActive(false);
+        allowPlant = false;
     }
 
     private bool hitTree(RaycastHit hit)

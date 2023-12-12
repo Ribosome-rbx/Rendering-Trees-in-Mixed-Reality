@@ -741,9 +741,9 @@ MonoBehaviour:
   boundsPadding: 0.01
   interactable: {fileID: 0}
   toggleHandlesOnClick: 1
-  dragToggleThreshold: 0.005
+  dragToggleThreshold: 0.2
   target: {fileID: 0}
-  handlesActive: 0
+  handlesActive: 1
   enabledHandles: 3
   rotateAnchor: 0
   scaleAnchor: 0

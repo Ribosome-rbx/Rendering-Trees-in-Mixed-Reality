@@ -71,12 +71,13 @@ public class FallOnGround : MonoBehaviour
     public void attach2Ground()
     {
         Debug.Log("in attach2Ground");
-        if (attach || attached)
+        if (attach)
         {
             attachedPos = transform.root.gameObject.transform.position;
             transform.root.gameObject.transform.position = new Vector3(attachedPos.x, clone.transform.position.y, attachedPos.z);
             transform.root.gameObject.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, 0);
             DestroyImmediate(clone);
+            attach = false;
             attached = true;
         }
     }
