@@ -48,6 +48,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 35c4f60a849e853489dbc9ed4b7c322f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Weights:
+        m_Texture: {fileID: 2800000, guid: d5c092e214f5edc4eb3b292a1085fae4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -66,7 +70,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Wind_Density: 1
-    - _Wind_Strength: 0.13
+    - _Wind_Strength: 0.008
     m_Colors:
-    - _Wind_Movement: {r: 3.04, g: 0, b: 0, a: 0}
+    - _Wind_Movement: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
