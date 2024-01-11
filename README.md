@@ -35,7 +35,7 @@ Our project is developed on [Mixed Reality Toolkit for MagicLeap 2](https://deve
 ### Run
 With everything prepared, you can find our __Scene file(.unity)__ under this folder:
 ```
-~\mr2023_rendering_trees-develop\UnityProjects\MRTKDevTemplate\Assets\Scenes\EmptyScene
+./UnityProjects/MRTKDevTemplate/Assets/Scenes/EmptyScene
 ``` 
 Then, you may find the following links useful to run our project in Magic Leap Application Simulator and the device. 
 
