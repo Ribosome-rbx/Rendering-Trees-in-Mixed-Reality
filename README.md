@@ -1,94 +1,44 @@
-## MRTKDevTemplate project port to Magic Leap 2
+<p align="center">
+  <h1 align="center">Rendering Trees in Augmented Reality</h1>
+  <p align="center">
+    <a href="https://github.com/feldspath"><strong>Marius Debussche*</strong></a>
+    ·
+    <a href="https://github.com/Sumato42"><strong>David Kamm*</strong></a>
+    .
+    <a href="https://github.com/Zykassoulet"><strong>Adrien Lanne*</strong></a>
+    ·
+    <a href="https://github.com/Ribosome-rbx"><strong>Boxiang Rong*</strong></a>
+  </p>
+  <p align="center"><strong>(* Equal Contribution)</strong></p>
+  <h3 align="center"> <a href="https://youtu.be/BjEJ_WHgWJg">Paper</a> | <a href="https://docs.google.com/presentation/d/1MjJEeYk3IWrWuV2Ctf4495X7Q1sQIUH11DDMn2zhPJI/edit?usp=sharing">Poster</a> | <a href="https://youtu.be/BjEJ_WHgWJg">Video</a> </h3>
+  <div align="center"></div>
+</p>
 
-This repo is provided as a demonstration of getting an MRTK3 project running on the Magic Leap 2 platform, specifically the **MRTKDevTemplate** project, located at `UnityProjects/MRTKDevTemplate`, that is used in development of MRTK3.  For steps involved in preparing an MRTK3 project for Magic Leap 2, please see the README documentation that accompanies Magic Leap's `com.magicleap.mrtk3` package, located at `UnityPackages/MagicLeapMRTK3/README.md`.
+[![](./Resources/results.png)](https://youtu.be/BjEJ_WHgWJg)
+<p align="center">
+    (Click to View our Demo Video)
+</p>
+<p align="left">
+    This is a project for <a href="https://github.com/MixedRealityETHZ">ETHZ Mixed Reality</a> course. We develop an AR program, where you can select different types of trees and plant them on the reconstructed ground. We achieve realistic rendering of trees by using: billboard-based models, RGB and normal mapping, environment map and leaf animation. Our user interface enables flexible and efficient tree planting. We also support "Hand Manipulation", to provide users with a better immersive experience.
+</p>
 
-> [!NOTE] 
-> If updating to the Magic Leap Unity SDK package, version 1.10 or 1.11, the OpenXR packages will need to be removed from the project to avoid a compile error.  After doing so, the Library folder may also need to be deleted and the project re-opened to fully flush out any compile errors.
+![](./Resources/pipeline.png)
 
-<br/>
+## Getting Started
+### Prerequisites
+- [Unity 2023.3.13f1](https://unity.com/download)
+- [Magic Leap Hub](https://ml2-developer.magicleap.com/downloads)
 
-# Mixed Reality Toolkit for Unity
+### Setup
+Our project is developed on [Mixed Reality Toolkit for MagicLeap 2](https://developer-docs.magicleap.cloud/docs/guides/third-party/mrtk3/mrtk3-overview/). Please see their official [guidelines](https://developer-docs.magicleap.cloud/docs/guides/third-party/mrtk3/mrtk3-template/#getting-started) for trouble shooting. And we may also need to configure the project with [Magic Leap Setup Tool](https://assetstore.unity.com/packages/tools/integration/magic-leap-setup-tool-194780), see this [guideline](https://developer-docs.magicleap.cloud/docs/guides/unity/getting-started/configure-unity-settings/#quickstart) to prepare all the dependencies.  
 
-![Mixed Reality Toolkit](https://user-images.githubusercontent.com/13754172/122838732-89ea3400-d2ab-11eb-8c79-32dd84944989.png)
+### Run
+With everything prepared, you can find our __Scene file(.unity)__ under this folder:
+```
+~\mr2023_rendering_trees-develop\UnityProjects\MRTKDevTemplate\Assets\Scenes\EmptyScene
+``` 
+Then, you may find the following links useful to run our project in Magic Leap Application Simulator and the device. 
 
-![MRTK3 Banner](./Images/MRTK3_banner.png)
-
-**MRTK3** is the third generation of the Mixed Reality Toolkit for Unity. It's an open source project designed to accelerate cross-platform mixed reality development in Unity. MRTK3 is built on top of [Unity's XR Interaction Toolkit (XRI)](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.1/manual/index.html) and OpenXR. This new generation of MRTK is intended to be faster, cleaner, and more modular, with an easier cross-platform development workflow enabled by OpenXR and the Unity Input System.
-
-## Key improvements
-
-### Architecture
-
-* Built on Unity XR Interaction Toolkit and the Unity Input System.
-* Dedicated to OpenXR, with flexibility for other XRSDK backends
-* Open-ended and extensible interaction paradigms across devices, platforms, and applications
-
-### Performance
-
-* Rewrote and redesigned most features and systems, from UX to input to subsystems.
-* Zero per-frame memory allocation.
-* Tuned for maximum performance on HoloLens 2 and other resource-constrained mobile platforms.
-
-### UI
-
-* New interaction models (gaze-pinch indirect manipulation).
-* Updated Mixed Reality Design Language.
-* Unity Canvas + 3D UX: production-grade dynamic auto-layout.
-* Unified 2D & 3D input for gamepad, mouse, and accessibility support.
-* Data binding for branding, theming, dynamic data, and complex lists.
-
-## Requirements
-
-MRTK3 requires Unity 2021.3.21 or higher. In addition, you need the [Mixed Reality Feature Tool for Unity](https://aka.ms/mrfeaturetool) to find, download, and add the packages to your project.
-
-## Getting started
-
-[Follow the documentation for setting up MRTK3 packages as dependencies in your project here.](https://learn.microsoft.com/windows/mixed-reality/mrtk-unity/mrtk3-overview/getting-started/setting-up/setup-new-project) Alternatively, you can clone this repo directly to experiment with our template project. However, we *strongly* recommend adding MRTK3 packages as dependencies through the Feature Tool, as it makes updating, managing, and consuming MRTK3 packages far easier and less error-prone.
-
-## Supported devices
-
-| Platform | Supported Devices |
-|---|---|
-| OpenXR devices | Microsoft HoloLens 2 <br> Magic Leap 2 <br> Meta Quest 1/2 <br> Windows Mixed Reality (experimental) <br> SteamVR (experimental) <br> Oculus Rift on OpenXR (experimental) <br> Varjo XR-3 (experimental) <br> **If your OpenXR device already works with MRTK3, let us know!**
-| Windows | Traditional flat-screen desktop (experimental)
-| And more coming soon! |
-
-## Versioning
-
-In previous versions of MRTK (HoloToolkit and MRTK v2), all packages were released as a complete set, marked with the same version number (ex: 2.8.0). Starting with MRTK3 GA, each package will be individually versioned, following the [Semantic Versioning 2.0.0 specification](https://semver.org/spec/v2.0.0.html). (As a result, the '3' in MRTK3 is not a version number!)
-
-
-Individual versioning will enable faster servicing while providing improved developer understanding of the magnitude of changes and reducing the number of packages needing to be updated to acquire the desired fix(es).
-
-For example, if a non-breaking new feature is added to the UX core package, which contains the logic for user interface behavior the minor version number will increase (from 3.0.x to 3.1.0). Since the change is non-breaking, the UX components package, which depends upon UX core, is not required to be updated. 
-
-As a result of this change, there is not a unified MRTK3 product version.
-
-To help identify specific packages and their versions, MRTK3 provides an about dialog that lists the relevant packages included in the project. To access this dialog, select `Mixed Reality` > `MRTK3` > `About MRTK` from the Unity Editor menu.
-
-![About MRTK Panel](Images/AboutMRTK.png)
-
-## Early preview packages
-
-Some parts of MRTK3 are at earlier stages of the development process than others. Early preview packages can be identified in the Mixed Reality Feature Tool and Unity Package Manager by the `Early Preview` designation in their names.
-
-As of June 2022, the following components are considered to be in early preview.
-
-| Name | Package Name |
-| --- | --- |
-| Accessibility | org.mixedrealitytoolkit.accessibility |
-| Data Binding and Theming | org.mixedrealitytoolkit.data |
-
-The MRTK team is fully committed to releasing this functionality. It is important to note that the packages may not contain the complete feature set that is planned to be released or they may undergo major, breaking architectural changes before release.
-
-We very much encourage you to provide any and all feedback to help shape the final form of these early preview features.
-
-## Contributing
-
-This project welcomes contributions, suggestions, and feedback. All contributions, suggestions, and feedback you submitted are accepted under the [Project's license](./LICENSE.md). You represent that if you do not own copyright in the code that you have the authority to submit it under the [Project's license](./LICENSE.md). All feedback, suggestions, or contributions are not confidential.
-
-For more information on how to contribute Mixed Reality Toolkit for Unity Project, please read [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-## Governance
-
-For information on how the Mixed Reality Toolkit for Unity Project is governed, please read [GOVERNANCE.md](./GOVERNANCE.md).
+Useful Links:
+1. Magic Leap Application Simulator Setup[[link](https://developer-docs.magicleap.cloud/docs/guides/developer-tools/app-sim/app-sim-setup/)]
+2. Compile unity file into Magic Leap device[[link](https://developer-docs.magicleap.cloud/docs/guides/unity/getting-started/unity-building-simple-app/)]
