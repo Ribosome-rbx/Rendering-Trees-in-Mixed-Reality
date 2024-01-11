@@ -10,7 +10,7 @@
     <a href="https://github.com/Ribosome-rbx"><strong>Boxiang Rong*</strong></a>
   </p>
   <p align="center"><strong>(* Equal Contribution)</strong></p>
-  <h3 align="center"> <a href="https://youtu.be/BjEJ_WHgWJg">Paper</a> | <a href="https://docs.google.com/presentation/d/1MjJEeYk3IWrWuV2Ctf4495X7Q1sQIUH11DDMn2zhPJI/edit?usp=sharing">Poster</a> | <a href="https://youtu.be/BjEJ_WHgWJg">Video</a> </h3>
+  <h3 align="center"> <a href="./Resources/Rendering_Trees_in_Augmented_Reality.pdf">Paper</a> | <a href="https://docs.google.com/presentation/d/1MjJEeYk3IWrWuV2Ctf4495X7Q1sQIUH11DDMn2zhPJI/edit?usp=sharing">Poster</a> | <a href="https://youtu.be/BjEJ_WHgWJg">Video</a> </h3>
   <div align="center"></div>
 </p>
 
