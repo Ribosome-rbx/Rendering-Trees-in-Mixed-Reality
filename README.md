@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">Rendering Trees in Augmented Reality</h1>
+  <h1 align="center">Rendering Trees in Mixed Reality</h1>
   <p align="center">
     <a href="https://github.com/feldspath"><strong>Marius Debussche*</strong></a>
     ·
