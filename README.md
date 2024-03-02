@@ -19,7 +19,7 @@
     (Click to View our Demo Video)
 </p>
 <p align="left">
-    This is a project for <a href="https://github.com/MixedRealityETHZ">ETHZ Mixed Reality</a> course. We develop an AR program, where you can select different types of trees and plant them on the reconstructed ground. We achieve realistic rendering of trees by using: billboard-based models, RGB and normal mapping, environment map and leaf animation. Our user interface enables flexible and efficient tree planting. We also support "Hand Manipulation", to provide users with a better immersive experience.
+    This is a project for <a href="https://github.com/MixedRealityETHZ">ETHZ Mixed Reality</a> course. We develop an MR program, where you can select different types of trees and plant them on the reconstructed ground. We achieve realistic rendering of trees by using: billboard-based models, RGB and normal mapping, environment map and leaf animation. Our user interface enables flexible and efficient tree planting. We also support "Hand Manipulation", to provide users with a better immersive experience.
 </p>
 
 ![](./Resources/pipeline.png)
